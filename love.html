@@ -3,21 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#170b18">
-<title>Для Сонечки ❤️</title>
+<meta name="theme-color" content="#210d20">
+<title>Для моей Сонечки ❤️</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{min-height:100svh;overflow:hidden;display:grid;place-items:center;color:#fff;background:radial-gradient(ellipse at 50% 35%,#6d234c 0%,#35132f 42%,#140b1c 100%)}
-.glow{position:absolute;width:min(90vw,560px);aspect-ratio:1;border-radius:50%;background:#ff4f9a;filter:blur(100px);opacity:.17;animation:pulse 4s ease-in-out infinite}
-main{position:relative;text-align:center;padding:36px 24px;width:min(100%,520px);z-index:1}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{min-height:100svh;overflow:hidden;display:grid;place-items:center;padding:24px;color:#fff;background:radial-gradient(ellipse at 50% 35%,#783052 0%,#3b1737 46%,#160c20 100%)}
+.glow{position:fixed;width:min(90vw,560px);aspect-ratio:1;border-radius:50%;background:#ff4f9a;filter:blur(100px);opacity:.2;animation:pulse 4s ease-in-out infinite;pointer-events:none}
+main{position:relative;text-align:center;width:min(100%,520px);z-index:1;padding:34px 22px 38px;border:1px solid #ffffff22;border-radius:30px;background:#ffffff0b;backdrop-filter:blur(8px);box-shadow:0 20px 80px #08020c55}
 .heart{font-size:clamp(90px,25vw,140px);line-height:1;display:inline-block;filter:drop-shadow(0 0 25px #ff4f9a);animation:beat 1.35s ease-in-out infinite}
-h1{font-family:Georgia,serif;font-size:clamp(34px,9vw,54px);line-height:1.12;margin:28px 0 16px;text-shadow:0 3px 24px #ff5caa66}
-p{font-size:18px;line-height:1.6;color:#f7dce9;margin:0 auto;max-width:360px}
-.sparkle{margin-top:26px;font-size:22px;letter-spacing:12px;color:#ffc4dc}
-.float{position:absolute;bottom:-50px;color:#ff9bc5;opacity:0;animation:rise linear infinite;pointer-events:none}
+h1{font-family:Georgia,serif;font-size:clamp(34px,9vw,54px);line-height:1.12;margin:24px 0 16px;text-shadow:0 3px 24px #ff5caa66}
+p{font-size:17px;line-height:1.65;color:#f7dce9;margin:0 auto;max-width:380px}
+button{margin-top:28px;border:0;border-radius:999px;padding:15px 25px;background:linear-gradient(135deg,#ff8ab8,#ff4f91);color:#45132e;font-size:16px;font-weight:700;box-shadow:0 8px 28px #ff4f9a55;cursor:pointer}
+button:active{transform:scale(.97)}
+#secret{display:none;margin-top:22px;padding:18px 16px;border-radius:18px;background:#ffffff12;color:#ffe3ef;font-family:Georgia,serif;font-size:20px;line-height:1.5}
+#secret.show{display:block;animation:appear .6s ease both}
+.sparkle{margin-top:24px;font-size:22px;letter-spacing:12px;color:#ffc4dc}
+.float{position:fixed;bottom:-50px;color:#ff9bc5;opacity:0;animation:rise linear infinite;pointer-events:none;z-index:0}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
-@keyframes pulse{50%{transform:scale(1.18);opacity:.27}}
+@keyframes pulse{50%{transform:scale(1.18);opacity:.3}}
 @keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}12%{opacity:.7}85%{opacity:.6}100%{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -26,9 +33,17 @@ p{font-size:18px;line-height:1.6;color:#f7dce9;margin:0 auto;max-width:360px}
 <div class="heart" aria-hidden="true">❤️</div>
 <h1>Я тебя безумно люблю,<br>Сонечка моя!</h1>
 <p>Ты — моё счастье, моя нежность и самая любимая девочка. Пусть ты всегда помнишь, как сильно ты мне дорога. ❤️</p>
+<button id="surprise" type="button">Нажми на меня 💌</button>
+<div id="secret" aria-live="polite">Если бы мне пришлось выбирать снова, я бы каждый раз выбирал тебя. Ты — моё самое любимое чудо. ❤️</div>
 <div class="sparkle">✦ ✧ ✦</div>
 </main>
 <script>
+const secret=document.getElementById('secret');
+document.getElementById('surprise').addEventListener('click',()=>{
+ secret.classList.toggle('show');
+ document.getElementById('surprise').textContent=secret.classList.contains('show')?'Я люблю тебя ❤️':'Нажми на меня 💌';
+ for(let i=0;i<12;i++){const e=document.createElement('span');e.className='float';e.textContent='♥';e.style.left=(35+Math.random()*30)+'%';e.style.fontSize=(18+Math.random()*22)+'px';e.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),6500)}
+});
 for(let i=0;i<24;i++){const e=document.createElement('span');e.className='float';e.textContent=Math.random()>.5?'♥':'♡';e.style.left=Math.random()*100+'%';e.style.fontSize=(14+Math.random()*22)+'px';e.style.animationDuration=(8+Math.random()*10)+'s';e.style.animationDelay=(-Math.random()*16)+'s';document.body.appendChild(e)}
 </script>
 </body>
