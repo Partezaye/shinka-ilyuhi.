@@ -8,7 +8,7 @@
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{min-height:100svh;overflow:hidden;display:grid;place-items:center;padding:24px;color:#fff;background:radial-gradient(ellipse at 50% 35%,#783052 0%,#3b1737 46%,#160c20 100%)}
+body{min-height:100svh;overflow-x:hidden;overflow-y:auto;display:grid;place-items:center;padding:24px;color:#fff;background:radial-gradient(ellipse at 50% 35%,#783052 0%,#3b1737 46%,#160c20 100%)}
 .glow{position:fixed;width:min(90vw,560px);aspect-ratio:1;border-radius:50%;background:#ff4f9a;filter:blur(100px);opacity:.2;animation:pulse 4s ease-in-out infinite;pointer-events:none}
 main{position:relative;text-align:center;width:min(100%,520px);z-index:1;padding:34px 22px 38px;border:1px solid #ffffff22;border-radius:30px;background:#ffffff0b;backdrop-filter:blur(8px);box-shadow:0 20px 80px #08020c55}
 .heart{font-size:clamp(90px,25vw,140px);line-height:1;display:inline-block;filter:drop-shadow(0 0 25px #ff4f9a);animation:beat 1.35s ease-in-out infinite}
@@ -18,7 +18,7 @@ button{margin-top:28px;border:0;border-radius:999px;padding:15px 25px;background
 button:active{transform:scale(.97)}
 #secret{display:none;margin-top:22px;padding:18px 16px;border-radius:18px;background:#ffffff12;color:#ffe3ef;font-family:Georgia,serif;font-size:20px;line-height:1.5}
 #secret.show{display:block;animation:appear .6s ease both}
-.sparkle{margin-top:24px;font-size:22px;letter-spacing:12px;color:#ffc4dc}
+.counter{margin:28px auto 0;padding:18px 14px;border-radius:20px;background:#ffffff12;border:1px solid #ffffff1c}.counter-label{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#f5b8d2}.counter-number{font-family:Georgia,serif;font-size:clamp(38px,10vw,54px);font-weight:700;color:#fff;margin:7px 0 2px;text-shadow:0 0 22px #ff72ad88}.counter-date{font-size:13px;color:#edc6d8}.sparkle{margin-top:24px;font-size:22px;letter-spacing:12px;color:#ffc4dc}
 .float{position:fixed;bottom:-50px;color:#ff9bc5;opacity:0;animation:rise linear infinite;pointer-events:none;z-index:0}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
 @keyframes pulse{50%{transform:scale(1.18);opacity:.3}}
@@ -35,10 +35,10 @@ button:active{transform:scale(.97)}
 <p>Ты — моё счастье, моя нежность и самая любимая девочка. Пусть ты всегда помнишь, как сильно ты мне дорога. ❤️</p>
 <button id="surprise" type="button">Нажми на меня 💌</button>
 <div id="secret" aria-live="polite">Если бы мне пришлось выбирать снова, я бы каждый раз выбирал тебя. Ты — моё самое любимое чудо. ❤️</div>
-<div class="sparkle">✦ ✧ ✦</div>
+<section class="counter"><div class="counter-label">Мы вместе уже</div><div class="counter-number" id="days">—</div><div class="counter-date">С 18 февраля 2026 года ❤️</div></section><div class="sparkle">✦ ✧ ✦</div>
 </main>
 <script>
-const secret=document.getElementById('secret');
+const startDate=new Date(2026,1,18);\nconst today=new Date(); today.setHours(0,0,0,0);\nconst elapsed=Math.max(0,Math.floor((today-startDate)/86400000));\ndocument.getElementById('days').textContent=elapsed+' '+(elapsed%10===1&&elapsed%100!==11?'день':([2,3,4].includes(elapsed%10)&&![12,13,14].includes(elapsed%100)?'дня':'дней'));\nconst secret=document.getElementById('secret');
 document.getElementById('surprise').addEventListener('click',()=>{
  secret.classList.toggle('show');
  document.getElementById('surprise').textContent=secret.classList.contains('show')?'Я люблю тебя ❤️':'Нажми на меня 💌';
