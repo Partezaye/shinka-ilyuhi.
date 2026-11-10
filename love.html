@@ -38,7 +38,11 @@ button:active{transform:scale(.97)}
 <section class="counter"><div class="counter-label">Мы вместе уже</div><div class="counter-number" id="days">—</div><div class="counter-date">С 18 февраля 2026 года ❤️</div></section><div class="sparkle">✦ ✧ ✦</div>
 </main>
 <script>
-const startDate=new Date(2026,1,18);\nconst today=new Date(); today.setHours(0,0,0,0);\nconst elapsed=Math.max(0,Math.floor((today-startDate)/86400000));\ndocument.getElementById('days').textContent=elapsed+' '+(elapsed%10===1&&elapsed%100!==11?'день':([2,3,4].includes(elapsed%10)&&![12,13,14].includes(elapsed%100)?'дня':'дней'));\nconst secret=document.getElementById('secret');
+const startDate=new Date(2026,1,18);
+const today=new Date(); today.setHours(0,0,0,0);
+const elapsed=Math.max(0,Math.floor((today-startDate)/86400000));
+document.getElementById('days').textContent=elapsed+' '+(elapsed%10===1&&elapsed%100!==11?'день':([2,3,4].includes(elapsed%10)&&![12,13,14].includes(elapsed%100)?'дня':'дней'));
+const secret=document.getElementById('secret');
 document.getElementById('surprise').addEventListener('click',()=>{
  secret.classList.toggle('show');
  document.getElementById('surprise').textContent=secret.classList.contains('show')?'Я люблю тебя ❤️':'Нажми на меня 💌';
